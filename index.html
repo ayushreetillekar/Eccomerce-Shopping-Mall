@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyushreeHub-Your Online shope</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/utilities.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">AyuHub</a>
+
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search products">
+                <button onclick="searchProducts()">Search</button>
+            </div>
+
+            <div class="nav-actions">
+                <a href="#" class="nav-btn" onclick="showPage('account')">Account</a>
+                <a href="#" class="nav-btn cart" onclick="showPage('cart')">
+                    <img class="invert" src="img/cart.svg">Cart <span id="cartCount">0</span></a>
+                <a href="#" class="nav-btn" onclick="showPage('orders')">Orders</a>
+            </div>
+            <div class="mobile-menu-btn" onclick="toggleSidebar()">
+                <img src="img/hamburger.svg" alt="">
+            </div>
+        </div>
+    </header>
+
+    <div class="sidebar-overlay" onclick="toggleSidebar()">
+
+    </div>
+
+    <div class="sidebar">
+        <button class="close-sidebar" onclick="toggleSidebar()">
+            <img src="img/close.svg" style="width: 20px; height: 20px;">
+        </button>
+
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#" onclick="showPage('account');toggleSidebar()">Account</a>
+            </li>
+            <li>
+                <a href="#" onclick="showPage('cart');toggleSidebar()"><img src="img/cart.svg">Cart</a>
+            </li>
+            <li>
+                <a href="#" onclick="showPage('orders');toggleSidebar()">Orders</a>
+            </li>
+        </ul>
+    </div>
+
+    <main id="main-container">
+        <div id="home-page" class="page">
+
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to AyuHub</h1>
+                    <p>Discover amazing products at unbeatable price</p>
+                    <a href="#categories" class="hero-button">Shop Now</a>
+                </div>
+            </section>
+
+            <section class="categories" id="categories">
+                <div class="container">
+                    <h2>
+                        Shop by Category
+                    </h2>
+                    <div class="category-grid" id="category-grid">
+                        <!-- category will be populate here -->
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="categoryPage" class="page hidden">
+            <div class="container">
+                <h1 id="categoryTitle">
+                    Products
+                </h1>
+                <div class="filter-section">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="sortBy">Sort By </label>
+                            <select id="sortBy" onchange="applyFilteres()">
+                                <option value="relevance">Relevance</option>
+                                <option value="Price-low">Price : Low to High</option>
+                                <option value="Price-high">Price : high to Low</option>
+                                <option value="Rating">Rating</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="priceRange">Max Price :</label>
+                            <input type="range" id="priceRange" min="0" max="10000" value="10000"
+                                onchange="applyFilteres()">
+                            <span id="priceValue">$1000</span>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="brandFilter">Brand : </label>
+                            <select id="brandFilter" onchange="applyFilteres()">
+                                <option value="">All Brands</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-grid" id="productGrid">
+
+                </div>
+            </div>
+        </div>
+
+        <div id="productPage" class="page hidden">
+            <div class="container">
+                <div class="product-detail" id="product-detail">
+
+                </div>
+            </div>
+        </div>
+
+        <div id="cartPage" class="page hidden">
+            <div class="container">
+                <h1>My Cart</h1>
+                <div id="cartItems">
+
+                </div>
+                <div class="cart-summary" id="cartSummary">
+
+                </div>
+            </div>
+        </div>
+
+        <div id="orderPage" class="page hidden">
+            <div class="container">
+                <h1>Place Order</h1>
+                <div id="orderSteps">
+
+                </div>
+            </div>
+
+            <div id="ordersPage" class="page hidden">
+                <div class="container">
+                    <h1>My Orders</h1>
+                    <div id="ordersList">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="accountPage" class="page hidden">
+            <div class="container">
+                <h1>My ACcount</h1>
+                <div class="order-form">
+                    <h2>Personal Information</h2>
+                    <div class="fomr-group">
+                        <label for="userName">Name : </label>
+                        <input type="text" id="userName" placeholder="Enter Your Name">
+                    </div>
+                    <div class="fomr-group">
+                        <label for="userEmail">Email : </label>
+                        <input type="email" id="userEmail" placeholder="Enter Your Email">
+                    </div>
+                    <div class="fomr-group">
+                        <label for="userPhone">Phone : </label>
+                        <input type="tel" id="userPhone" placeholder="Enter Your Phone Number">
+                    </div>
+                    <div class="fomr-group">
+                        <label for="userAddress">Address : </label>
+                        <textarea id="userAddress" placeholder="Enter Your Address"> </textarea>
+                    </div>
+                    <button class="btn-primary" onclick="saveUserInfo()">Save Information</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
